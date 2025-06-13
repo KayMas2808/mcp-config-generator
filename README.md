@@ -62,7 +62,7 @@ npm run analyze "Student registration form"
 ```bash
 # do this in a terminal window rather than in cursor,
 # since you will have to restart cursor after changing the mcp.json file.
-git clone https://github.com/your-username/mcp-config-generator.git
+git clone https://github.com/KayMas2808/mcp-config-generator.git
 cd mcp-config-generator
 npm install
 npm run build
