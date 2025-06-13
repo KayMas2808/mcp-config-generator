@@ -32,11 +32,11 @@ export class ConfigGenerator {
   private generateScreens(requirements: ParsedRequirement): Screen[] {
     const screens: Screen[] = [];
     
-    // Main input screen
+    // main screen
     const mainScreen = this.generateMainScreen(requirements);
     screens.push(mainScreen);
     
-    // Details/Summary screen if needed
+    // summary screen if needed
     if (requirements.hasDetailsScreen || requirements.hasPayment) {
       const detailsScreen = this.generateDetailsScreen(requirements);
       screens.push(detailsScreen);
@@ -48,13 +48,13 @@ export class ConfigGenerator {
   private generateMainScreen(requirements: ParsedRequirement): Screen {
     const widgets: Widget[] = [];
     
-    // Generate input widgets for each field
+    // input widgets for each field
     requirements.fields.forEach(field => {
       const widget = this.generateInputWidget(field);
       widgets.push(widget);
     });
     
-    // Add navigation button
+    // navigation button
     const nextButton = this.generateNextButton(requirements);
     widgets.push(nextButton);
     
@@ -69,13 +69,13 @@ export class ConfigGenerator {
   private generateDetailsScreen(requirements: ParsedRequirement): Screen {
     const widgets: Widget[] = [];
     
-    // Generate display widgets for each field
+    // display widgets for each field
     requirements.fields.forEach(field => {
       const widget = this.generateDisplayWidget(field);
       widgets.push(widget);
     });
     
-    // Add payment buttons if needed
+    // payment buttons if needed
     if (requirements.hasPayment) {
       const paymentWidget = this.generatePaymentWidget();
       widgets.push(paymentWidget);
@@ -132,7 +132,7 @@ export class ConfigGenerator {
     
     const targets: Target[] = [];
     
-    // If this is an amount field, also store it as txnAmount
+    // if amount field, store it as txnAmount
     if (field.type === 'number' && field.name.toLowerCase().includes('amount')) {
       targets.push({
         target: "API_TRANSACTION",
@@ -211,10 +211,10 @@ export class ConfigGenerator {
   }
   
   private generateHeading(requirements: ParsedRequirement): string {
-    // Try to extract an organization name or use a default
+    // extract an organization name or use default
     const defaultHeading = "DATA COLLECTION FORM";
     
-    // Look for organization names in the config name or description
+    // look for organization names in name or description
     const orgPatterns = [
       /college/i,
       /university/i,

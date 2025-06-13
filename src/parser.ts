@@ -5,28 +5,28 @@ export class PromptParser {
   parsePrompt(prompt: string): ParsedRequirement {
     const lowerPrompt = prompt.toLowerCase();
     
-    // Extract fields from the prompt
+    // extract fields from prompt
     const fields = this.extractFields(prompt);
     
-    // Extract config name (use a default if not specified)
+    // extract config name (use a default if not specified)
     const configName = this.extractConfigName(prompt) || this.generateConfigName(fields);
     
-    // Extract description
+    // extract description
     const description = this.extractDescription(prompt) || "Generated from prompt";
     
-    // Check for theme preference
+    // check for theme
     const theme = this.extractTheme(lowerPrompt) || "THEME_1";
     
-    // Check for logo URL
+    // check for logo url
     const logoUrl = this.extractLogoUrl(prompt) || "http://www.dummy-image-url.com/1.png";
     
-    // Check if details/summary screen is needed
+    // check if summary screen is needed
     const hasDetailsScreen = lowerPrompt.includes('details') || 
                              lowerPrompt.includes('summary') || 
                              lowerPrompt.includes('review') ||
                              lowerPrompt.includes('confirm');
     
-    // Check if payment is needed
+    // check if payment is needed
     const hasPayment = lowerPrompt.includes('payment') || 
                       lowerPrompt.includes('pay') || 
                       lowerPrompt.includes('amount') ||
@@ -47,22 +47,22 @@ export class PromptParser {
   private extractFields(prompt: string): ParsedRequirement['fields'] {
     const fields: ParsedRequirement['fields'] = [];
     
-    // Common field patterns
+    // common field patterns
     const fieldPatterns = [
-      // Name variations
+      // name variations
       { pattern: /\b(name|full name|first name|last name)\b/gi, type: 'string' as const, maxLength: 50 },
-      // ID/Number variations
+      // id/number
       { pattern: /\b(roll number|roll no|id|student id|employee id|registration number)\b/gi, type: 'string' as const, maxLength: 20 },
-      // Contact variations
+      // contact
       { pattern: /\b(phone|mobile|contact|phone number|mobile number)\b/gi, type: 'phone' as const, maxLength: 15 },
       { pattern: /\b(email|email address|e-mail)\b/gi, type: 'email' as const, maxLength: 100 },
-      // Amount variations
+      // amount
       { pattern: /\b(amount|fee|charge|cost|price|payment)\b/gi, type: 'number' as const, maxLength: 12 },
-      // Address variations
+      // address
       { pattern: /\b(address|location|street|city)\b/gi, type: 'string' as const, maxLength: 200 },
-      // Date variations
+      // date
       { pattern: /\b(date|birth date|dob|appointment date)\b/gi, type: 'string' as const, maxLength: 10 },
-      // Generic text fields
+      // generic text
       { pattern: /\b(description|comments|notes|remarks)\b/gi, type: 'string' as const, maxLength: 500 },
     ];
     
@@ -73,7 +73,7 @@ export class PromptParser {
         const normalizedName = this.normalizeFieldName(fieldName);
         const label = this.capitalizeWords(fieldName);
         
-        // Avoid duplicates
+        // duplicates
         if (!fields.find(f => f.name === normalizedName)) {
           fields.push({
             name: normalizedName,
@@ -87,7 +87,7 @@ export class PromptParser {
       });
     });
     
-    // If no specific fields found, try to extract generic field mentions
+    // no specific fields found - extract generic field mentions
     if (fields.length === 0) {
       const genericPatterns = /\b(capture|collect|enter|input|get)\s+([a-zA-Z\s,]+)/gi;
       const matches = [...prompt.matchAll(genericPatterns)];

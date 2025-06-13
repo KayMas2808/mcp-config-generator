@@ -143,13 +143,10 @@ class ConfigGeneratorServer {
       throw new Error('Prompt is required and must be a string');
     }
 
-    // Parse the natural language prompt
     const requirements = this.parser.parsePrompt(prompt);
     
-    // Generate the configuration
     let config = this.generator.generateConfig(requirements);
     
-    // Override username and password if provided
     config.username = username;
     config.password = password;
 
@@ -230,7 +227,6 @@ class ConfigGeneratorServer {
     const errors: string[] = [];
     const details: string[] = [];
 
-    // Check top-level structure
     if (!config.data) {
       errors.push('Missing "data" property');
     } else {
@@ -249,7 +245,6 @@ class ConfigGeneratorServer {
       details.push('Has "password" property');
     }
 
-    // Check data structure
     if (config.data) {
       if (!config.data.configName) {
         errors.push('Missing "data.configName" property');
@@ -262,7 +257,6 @@ class ConfigGeneratorServer {
       } else {
         details.push('Has JSON configuration');
         
-        // Check json structure
         const json = config.data.json;
         
         if (!json.schemaVersion) {
@@ -276,7 +270,6 @@ class ConfigGeneratorServer {
         } else {
           details.push(`Has ${json.screens.length} screens`);
           
-          // Check each screen
           json.screens.forEach((screen: any, index: number) => {
             if (!screen.id) {
               errors.push(`Screen ${index} missing "id"`);
