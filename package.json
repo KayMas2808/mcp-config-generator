@@ -1,0 +1,64 @@
+{
+  "name": "mcp-config-generator",
+  "version": "1.0.0",
+  "description": "MCP server for generating UI configuration JSON from natural language prompts",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "cli": "node cli.js",
+    "gen": "node cli.js generate",
+    "analyze": "node cli.js analyze",
+    "validate": "node cli.js validate",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.5.0",
+    "@types/node": "^20.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0"
+  },
+  "keywords": [
+    "mcp",
+    "configuration",
+    "ui",
+    "json", 
+    "generator",
+    "natural-language",
+    "form-builder",
+    "cursor",
+    "cli",
+    "model-context-protocol"
+  ],
+  "author": {
+    "name": "MCP Config Generator Team",
+    "email": "contact@example.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/mcp-config-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/mcp-config-generator/issues"
+  },
+  "homepage": "https://github.com/your-username/mcp-config-generator#readme",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "files": [
+    "dist/**/*",
+    "cli.js",
+    "README.md",
+    "LICENSE",
+    "package.json"
+  ],
+  "bin": {
+    "mcp-config-generator": "./dist/index.js",
+    "config-gen": "./cli.js"
+  }
+} 

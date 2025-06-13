@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "config-generator": {
+      "command": "/opt/homebrew/bin/node",
+      "args": ["/Users/jain.samyak/Documents/java-pjs/mcp-cursor-config-ui/dist/index.js"],
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+} 
