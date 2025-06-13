@@ -60,11 +60,13 @@ npm run analyze "Student registration form"
 ### Step 1: Install the Package
 
 ```bash
-# do this in a terminal window rather than in cursor, since you will have to restart cursor after changing the mcp.json file later.
+# do this in a terminal window rather than in cursor,
+# since you will have to restart cursor after changing the mcp.json file.
 git clone https://github.com/your-username/mcp-config-generator.git
 cd mcp-config-generator
 npm install
 npm run build
+# run this every time you want to use the tools in cursor
 npm start
 ```
 
