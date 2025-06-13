@@ -1,6 +1,6 @@
 # MCP Config Generator
 
-A  **Model Context Protocol (MCP) server** that generates UI configuration JSON from natural language prompts. Perfect for creating form configurations, analyzing requirements, and validating JSON structures using simple English descriptions.
+A MCP server that generates UI configuration JSON from natural language prompts. Perfect for creating form configurations, analyzing requirements, and validating JSON structures using simple English descriptions.
 
 ## Features
 
@@ -14,14 +14,14 @@ A  **Model Context Protocol (MCP) server** that generates UI configuration JSON 
 ### Installation
 
 ```bash
-# Install globally for CLI use
-npm install -g mcp-config-generator
-
-# Or clone and install locally
+# Clone and install locally
 git clone https://github.com/KayMas2808/mcp-config-generator.git
 cd mcp-config-generator
 npm install
 npm run build
+
+# Install globally for CLI use
+npm install -g mcp-config-generator
 ```
 
 ### CLI Usage
@@ -75,7 +75,7 @@ npm run build
 {
   "mcpServers": {
     "config-generator": {
-      "command": "/opt/homebrew/bin/node",
+      "command": "/opt/homebrew/bin/node", // your node path - run "which node"
       "args": ["/path/to/your/mcp-config-generator/dist/index.js"],
       "env": {
         "NODE_ENV": "production"
@@ -83,15 +83,6 @@ npm run build
     }
   }
 }
-```
-
-> **Note**: Replace `/path/to/your/mcp-config-generator` with the actual path where you cloned the repository.
-
-### Step 3: Find Your Node.js Path
-
-```bash
-which node
-# Use the output path in your Cursor configuration above
 ```
 
 ### Step 4: Restart Cursor
