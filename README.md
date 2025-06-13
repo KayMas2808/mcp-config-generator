@@ -2,6 +2,8 @@
 
 A MCP server that generates UI configuration JSON from natural language prompts. Perfect for creating form configurations, analyzing requirements, and validating JSON structures using simple English descriptions.
 
+This will need to be updated as more UI config JSON examples are found, or when the renderer is complete, so all possible rules and inputs are known. It is currently based on a single example I could find.
+
 ## Features
 
 - **Natural Language Processing** - Generate UI configurations for from simple English prompts

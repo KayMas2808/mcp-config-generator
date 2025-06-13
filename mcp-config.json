@@ -1,9 +1,0 @@
-{
-  "mcpServers": {
-    "config-generator": {
-      "command": "node",
-      "args": ["dist/index.js"],
-      "cwd": "/Users/jain.samyak/Documents/java-pjs/mcp-cursor-config-ui"
-    }
-  }
-} 
