@@ -3,7 +3,6 @@
 const { spawn } = require('child_process');
 const path = require('path');
 
-// ANSI colors for better output
 const colors = {
   reset: '\x1b[0m',
   bright: '\x1b[1m',
@@ -18,35 +17,26 @@ const colors = {
 function printUsage() {
   console.log(`${colors.bright}${colors.blue}MCP Config Generator CLI${colors.reset}
 
-${colors.bright}Usage:${colors.reset}
-  node cli.js generate "Create a form with Name and Email"
-  node cli.js generate "Student registration form" --username admin --password secret
-  node cli.js analyze "Create a form with Name, Email, and Amount"
-  node cli.js validate '{"data": {...}, "username": "place", "password": "holder"}'
-
 ${colors.bright}Commands:${colors.reset}
-  ${colors.green}generate${colors.reset}    Generate UI configuration from natural language prompt
-  ${colors.green}analyze${colors.reset}     Analyze prompt and show parsed requirements
-  ${colors.green}validate${colors.reset}    Validate a configuration JSON
+  ${colors.green}generate${colors.reset}    Generate UI configuration from natural language
+  ${colors.green}analyze${colors.reset}     Analyze prompt and show requirements
+  ${colors.green}validate${colors.reset}    Validate configuration JSON
 
 ${colors.bright}Options:${colors.reset}
-  ${colors.yellow}--username${colors.reset}  Username for the configuration (default: "place")
-  ${colors.yellow}--password${colors.reset}  Password for the configuration (default: "holder")
-  ${colors.yellow}--version${colors.reset}   Show version information
-  ${colors.yellow}--help${colors.reset}      Show this help message
+  ${colors.yellow}--username${colors.reset}  Username for config (default: "place")
+  ${colors.yellow}--password${colors.reset}  Password for config (default: "holder")
+  ${colors.yellow}--version${colors.reset}   Show version
+  ${colors.yellow}--help${colors.reset}      Show this help
 
-${colors.bright}Examples:${colors.reset}
-  ${colors.cyan}# Generate a simple form${colors.reset}
-  node cli.js generate "Create a contact form with Name, Email, and Phone"
+${colors.bright}Local Usage (from project directory):${colors.reset}
+  ${colors.cyan}node cli.js generate "Contact form with Name, Email, Phone"${colors.reset}
+  ${colors.cyan}node cli.js analyze "Student registration form"${colors.reset}
+  ${colors.cyan}node cli.js validate '{"data": {...}, "username": "place"}'${colors.reset}
 
-  ${colors.cyan}# Generate with custom credentials${colors.reset}
-  node cli.js generate "Student registration form" --username admin --password mypass
-
-  ${colors.cyan}# Analyze a prompt${colors.reset}
-  node cli.js analyze "Create a payment form with Amount and Card details"
-
-  ${colors.cyan}# Validate a config (paste your JSON)${colors.reset}
-  node cli.js validate '{"data": {"configName": "test"}, "username": "place", "password": "holder"}'
+${colors.bright}Global Usage (after npm install -g .):${colors.reset}
+  ${colors.cyan}config-gen generate "Contact form with Name, Email, Phone"${colors.reset}
+  ${colors.cyan}config-gen analyze "Student registration form"${colors.reset}
+  ${colors.cyan}config-gen validate '{"data": {...}, "username": "place"}'${colors.reset}
 `);
 }
 
@@ -67,7 +57,6 @@ function parseArgs() {
   const command = args[0];
   const prompt = args[1];
   
-  // Parse optional arguments
   const options = {
     username: 'place',
     password: 'holder'
@@ -76,10 +65,10 @@ function parseArgs() {
   for (let i = 2; i < args.length; i++) {
     if (args[i] === '--username' && args[i + 1]) {
       options.username = args[i + 1];
-      i++; // Skip next argument as it's the value
+      i++;
     } else if (args[i] === '--password' && args[i + 1]) {
       options.password = args[i + 1];
-      i++; // Skip next argument as it's the value
+      i++;
     }
   }
 
@@ -121,7 +110,6 @@ function callMcpTool(toolName, params) {
       }
 
       try {
-        // Skip the first line (server startup message) and parse JSON
         const lines = stdout.trim().split('\n');
         const jsonLine = lines.find(line => line.startsWith('{"result"') || line.startsWith('{"error"'));
         
@@ -143,7 +131,6 @@ function callMcpTool(toolName, params) {
       }
     });
 
-    // Send the JSON-RPC request
     const request = createJsonRpcRequest(toolName, params);
     child.stdin.write(request + '\n');
     child.stdin.end();
@@ -158,7 +145,6 @@ function formatOutput(result, command) {
 
   const content = result.content[0].text;
   
-  // Add some color formatting based on command
   if (command === 'generate') {
     console.log(`${colors.bright}${colors.green}✅ Configuration Generated Successfully!${colors.reset}\n`);
   } else if (command === 'analyze') {
@@ -222,5 +208,4 @@ async function main() {
   }
 }
 
-// Run the CLI
 main(); 
