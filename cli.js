@@ -23,20 +23,20 @@ ${colors.bright}Commands:${colors.reset}
   ${colors.green}validate${colors.reset}    Validate configuration JSON
 
 ${colors.bright}Options:${colors.reset}
-  ${colors.yellow}--username${colors.reset}  Username for config (default: "place")
-  ${colors.yellow}--password${colors.reset}  Password for config (default: "holder")
+  ${colors.yellow}--username${colors.reset}  Username for config (default: "obiwan")
+  ${colors.yellow}--password${colors.reset}  Password for config (default: "kenobi")
   ${colors.yellow}--version${colors.reset}   Show version
   ${colors.yellow}--help${colors.reset}      Show this help
 
 ${colors.bright}Local Usage (from project directory):${colors.reset}
   ${colors.cyan}node cli.js generate "Contact form with Name, Email, Phone"${colors.reset}
   ${colors.cyan}node cli.js analyze "Student registration form"${colors.reset}
-  ${colors.cyan}node cli.js validate '{"data": {...}, "username": "place"}'${colors.reset}
+  ${colors.cyan}node cli.js validate '{"data": {...}, "username": "obiwan"}'${colors.reset}
 
 ${colors.bright}Global Usage (after npm install -g .):${colors.reset}
   ${colors.cyan}config-gen generate "Contact form with Name, Email, Phone"${colors.reset}
   ${colors.cyan}config-gen analyze "Student registration form"${colors.reset}
-  ${colors.cyan}config-gen validate '{"data": {...}, "username": "place"}'${colors.reset}
+  ${colors.cyan}config-gen validate '{"data": {...}, "username": "obiwan"}'${colors.reset}
 `);
 }
 
@@ -58,8 +58,8 @@ function parseArgs() {
   const prompt = args[1];
   
   const options = {
-    username: 'place',
-    password: 'holder'
+    username: 'obiwan',
+    password: 'kenobi'
   };
 
   for (let i = 2; i < args.length; i++) {
