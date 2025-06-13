@@ -152,26 +152,7 @@ config-gen analyze "Create a conference registration form with Name, Email, Comp
 ### Configuration Validation
 
 ```bash
-config-gen validate '{"data": {"configName": "test_form", "json": {...}}, "username": "place", "password": "holder"}'
-```
-
-## Development
-
-### Local Development Setup
-
-```bash
-git clone https://github.com/KayMas2808/mcp-config-generator.git
-cd mcp-config-generator
-npm install
-
-# Development mode
-npm run dev
-
-# Build for production
-npm run build
-
-# Test CLI
-npm run cli --help
+config-gen validate '{"data": {"configName": "test_form", "json": {...}}, "username": "obiwan", "password": "kenobi"}'
 ```
 
 ### Project Structure
@@ -194,9 +175,7 @@ mcp-config-generator/
 - **Node.js** >= 18.0.0
 - **npm** >= 8.0.0
 
-## Troubleshooting
-
-### Common Issues
+### Possible Issues
 
 **"0 tools enabled" in Cursor:**
 - Ensure Node.js path is absolute in MCP configuration
@@ -204,7 +183,7 @@ mcp-config-generator/
 - Restart Cursor after configuration changes
 
 **CLI command not found:**
-- Install globally: `npm install -g mcp-config-generator`
+- Install globally from project root: `npm install -g`
 - Or use local: `npm run cli` or `node cli.js`
 
 **Permission errors:**
