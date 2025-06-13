@@ -20,8 +20,8 @@ cd mcp-config-generator
 npm install
 npm run build
 
-# Install globally for CLI use
-npm install -g mcp-config-generator
+# For using globally in the terminal
+npm install -g
 ```
 
 ### CLI Usage
