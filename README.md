@@ -1,15 +1,15 @@
-# MCP Config Generator 🚀
+# MCP Config Generator
 
 A  **Model Context Protocol (MCP) server** that generates UI configuration JSON from natural language prompts. Perfect for creating form configurations, analyzing requirements, and validating JSON structures using simple English descriptions.
 
-## ✨ Features
+## Features
 
-- 🤖 **Natural Language Processing** - Generate UI configurations for from simple English prompts
-- 🔧 **CLI & MCP Integration** - Use directly in terminal or integrate with Cursor/other MCP clients
-- ✅ **Configuration Validation** - Validate existing JSON configurations
-- 📋 **Requirement Analysis** - Parse and analyze prompts without full generation
+- **Natural Language Processing** - Generate UI configurations for from simple English prompts
+- **CLI & MCP Integration** - Use directly in terminal or integrate with Cursor/other MCP clients
+- **Configuration Validation** - Validate existing JSON configurations
+- **Requirement Analysis** - Parse and analyze prompts without full generation
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -53,7 +53,7 @@ npm run gen "Create a form with Name and Email"
 npm run analyze "Student registration form"
 ```
 
-## 📱 Cursor Integration
+## Cursor Integration
 
 ### Step 1: Install the Package
 
@@ -106,7 +106,7 @@ After saving the configuration, restart Cursor completely for the changes to tak
 @config-generator validate {"data": {...}, "username": "place", "password": "holder"}
 ```
 
-## 🛠️ Available Commands
+## Available Commands
 
 ### CLI Commands
 
@@ -132,7 +132,7 @@ After saving the configuration, restart Cursor completely for the changes to tak
 | `analyze_prompt` | Parse requirements without full generation |
 | `validate_config` | Validate configuration structure |
 
-## 📖 Usage Examples
+## Usage Examples
 
 ### Basic Form Generation
 
@@ -162,7 +162,7 @@ config-gen analyze "Create a conference registration form with Name, Email, Comp
 config-gen validate '{"data": {"configName": "test_form", "json": {...}}, "username": "place", "password": "holder"}'
 ```
 
-## 🔧 Development
+## Development
 
 ### Local Development Setup
 
